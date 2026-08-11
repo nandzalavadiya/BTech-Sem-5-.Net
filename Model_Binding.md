@@ -1,4 +1,4 @@
-# LAB 10 — Model Binding (Query, Route, Body, Form, Header)
+# Model Binding (Query, Route, Body, Form, Header)
 
 ---
 
