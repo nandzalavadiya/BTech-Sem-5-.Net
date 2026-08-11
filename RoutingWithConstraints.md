@@ -265,7 +265,7 @@ public IActionResult GetMaximumName(string name)
 
 ---
 
-## 12. Complete Demo Controller
+## 12. Complete RouteDemo Controller
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -310,45 +310,5 @@ public class RouteDemoController : ControllerBase
 
 ---
 
-## 13. Important Difference
 
-### Route Constraint
 
-Checks the value in the **URL** and decides whether the route matches.
-
-```csharp
-[HttpGet("{id:int}")]
-```
-
-Invalid URL value normally returns:
-
-```http
-404 Not Found
-```
-
-### FluentValidation
-
-Checks request data, usually from the **request body**.
-
-Invalid request data normally returns:
-
-```http
-400 Bad Request
-```
-
----
-
-## 14. Summary
-
-| Constraint | Purpose | Example |
-|---|---|---|
-| `int` | Integer only | `{id:int}` |
-| `bool` | `true` or `false` | `{isActive:bool}` |
-| `min` | Minimum numeric value | `{id:int:min(1)}` |
-| `max` | Maximum numeric value | `{id:int:max(100)}` |
-| `range` | Numeric range | `{age:int:range(18,60)}` |
-| `alpha` | Letters only | `{name:alpha}` |
-| `minlength` | Minimum text length | `{name:minlength(3)}` |
-| `maxlength` | Maximum text length | `{name:maxlength(10)}` |
-
-> **Key Point:** Route constraints validate the URL path. They are not a replacement for full request validation.
