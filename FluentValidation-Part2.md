@@ -192,8 +192,6 @@ RuleFor(student => student.StudentEmail)
 
 ## 9. `MustAsync()` — Asynchronous Custom Validation
 
-`Must()` (from Part 1's `StudentValidator` example) runs synchronously. `MustAsync()` is used when your check needs to **call a database, an API, or any awaitable operation** — for example, checking if an email is already taken.
-
 ```csharp
 RuleFor(student => student.StudentEmail)
     .MustAsync(async (email, cancellation) =>
@@ -204,10 +202,6 @@ RuleFor(student => student.StudentEmail)
     .WithMessage("This email is already registered.");
 ```
 
-**Notes:**
-
-- Never use `Must()` for database calls — it's synchronous and will block the request thread. `MustAsync()` is the correct tool.
-- The `cancellation` token lets ASP.NET Core cancel the check if the client disconnects early.
 
 ---
 
