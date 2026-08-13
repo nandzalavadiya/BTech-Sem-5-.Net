@@ -330,8 +330,6 @@ public class StudentsController : ControllerBase
 }
 ```
 
-> ✅ This resolves correctly because `StudentValidator` was already registered with `builder.Services.AddScoped<StudentValidator>();` in **Section 5**.
-
 ---
 
 ## 13. Validate the Request
@@ -396,6 +394,6 @@ Once every field satisfies its rules (`"userName": "Demo"`, `"password": "Demo@1
 
 ![Valid request passes all validation rules with 200 OK response](Success.png)
 
-> ✅ Each failed request returns a structured error array (`propertyName`, `errorMessage`, `errorCode`, etc.) — exactly what a front-end needs to highlight the offending field.
+
 
 ---
