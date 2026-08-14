@@ -299,11 +299,10 @@ Send the demo credentials (`student` / `123456`). Scalar returns a `200 OK` with
 
 ![Token Generation](./TokenGeneration.png)
 
-**2️⃣ Call the protected endpoint with the correct token**
+**2️⃣ Add The Generated Token in Scalar**
 
-Open the **Authentication** section on `GET /api/User`, choose **Bearer**, paste the token you copied (no need to type the `Bearer` prefix — Scalar adds it), and hit **Send**. You get a `200 OK` with the protected data.
 
-![Correct Token Success](./CorrectToken.png)
+![Correct Token Success](./JWT.jpeg)
 
 **3️⃣ Call the protected endpoint with a wrong/missing token**
 
