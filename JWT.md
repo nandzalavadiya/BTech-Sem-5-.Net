@@ -304,19 +304,6 @@ Send the demo credentials (`student` / `123456`). Scalar returns a `200 OK` with
 
 ![Correct Token Success](./JWT.jpeg)
 
-**3️⃣ Call the protected endpoint with a wrong/missing token**
-
-If the token is missing, edited, expired, or just wrong, `[Authorize]` rejects the request with `401 Unauthorized` — no body is returned.
-
-![Wrong Token 401](./TokenIsWrong.png)
-
-```bash
-dotnet run
-```
-
-Open Scalar: `https://localhost:{port}/scalar/v1`
-
-```
 
 ## Common Errors
 
