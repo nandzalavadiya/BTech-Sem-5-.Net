@@ -297,7 +297,7 @@ if (app.Environment.IsDevelopment())
 
 Send the demo credentials (`student` / `123456`). Scalar returns a `200 OK` with a `token` in the response body — copy this value.
 
-![Token Generation](./TokenGeneration.png)
+![Token Generation](./JWT.jpeg)
 
 **2️⃣ Call the protected endpoint with the correct token**
 
