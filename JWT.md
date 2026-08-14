@@ -243,22 +243,39 @@ Flip Authentication and Authorization, and `[Authorize]` basically stops working
 ## Step 8: Add Scalar for Easy Testing (Optional but Handy)
 
 ```csharp
-builder.Services.AddOpenApi(options =>
-{
-    options.AddDocumentTransformer((document, context, cancellationToken) =>
-    {
-        document.Components ??= new();
-        document.Components.SecuritySchemes.Add("Bearer", new()
-        {
-            Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
-            Scheme = "bearer",
-            BearerFormat = "JWT",
-            In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-            Description = "Enter your JWT token here (no need to type 'Bearer' prefix)"
-        });
-        return Task.CompletedTask;
-    });
-});
+ builder.Services.AddOpenApi(options =>
+ {
+     options.AddDocumentTransformer(
+         (document, context, cancellationToken) =>
+         {
+             document.Components ??= new();
+
+             document.Components.SecuritySchemes
+                 ??= new Dictionary<
+                     string,
+                     Microsoft.OpenApi.Models.OpenApiSecurityScheme>();
+
+             document.Components.SecuritySchemes["Bearer"] =
+                 new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                 {
+                     Type =
+                         Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+
+                     Scheme = "bearer",
+
+                     BearerFormat = "JWT",
+
+                     In =
+                         Microsoft.OpenApi.Models.ParameterLocation.Header,
+
+                     Description =
+                         "Enter your JWT token here (no need to type 'Bearer' prefix)"
+                 };
+
+             return Task.CompletedTask;
+         });
+ });
+
 
 // after var app = builder.Build();
 if (app.Environment.IsDevelopment())
