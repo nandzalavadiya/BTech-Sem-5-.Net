@@ -53,12 +53,12 @@ dotnet add package FluentValidation.AspNetCore
 
 ---
 
-## 4. The Student Model We'll Use
+## 4. The Student Dtos We'll Use
 
 ```csharp
-namespace EFCoreCrudDemo.Models;
+namespace EFCoreCrudDemo.Dtos;
 
-public class Student
+public class StudentDto
 {
     public int StudentId { get; set; }
     public string StudentName { get; set; } = string.Empty;
@@ -96,7 +96,7 @@ using FluentValidation;
 
 namespace EFCoreCrudDemo.Validators;
 
-public class StudentValidator : AbstractValidator<Student>
+public class StudentValidator : AbstractValidator<StudentDto>
 {
     public StudentValidator()
     {
@@ -283,7 +283,7 @@ using FluentValidation;
 
 namespace EFCoreCrudDemo.Validators;
 
-public class StudentValidator : AbstractValidator<Student>
+public class StudentValidator : AbstractValidator<StudentDto>
 {
     public StudentValidator()
     {
@@ -337,7 +337,7 @@ public class StudentsController : ControllerBase
 ```csharp
 [HttpPost]
 public async Task<IActionResult> Create(
-    Student student
+    StudentDto student
 )
 {
     var validationResult =
