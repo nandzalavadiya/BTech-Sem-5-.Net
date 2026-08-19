@@ -194,7 +194,7 @@ RuleFor(student => student.StudentEmail)
 
 ```csharp
 RuleFor(student => student.StudentEmail)
-    .MustAsync(async (dto, email, cancellation) =>
+    .MustAsync(async (email, cancellation) =>
  {
      // Allow the user's own current email to pass on Update
      bool exists = await _context.Student
