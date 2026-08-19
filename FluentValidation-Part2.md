@@ -7,9 +7,9 @@
 ## 1.Student Model
 
 ```csharp
-namespace EFCoreCrudDemo.Models;
+namespace EFCoreCrudDemo.Dtos;
 
-public class Student
+public class StudentDto
 {
     public int StudentId { get; set; }
     public string StudentName { get; set; } = string.Empty;
@@ -17,7 +17,7 @@ public class Student
     public int DepartmentId { get; set; }
     public int Age { get; set; }
 
-    public UserRole Role { get; set; }              // for IsInEnum()
+    public int RoleId { get; set; }              // for IsInEnum()
     public string CardNumber { get; set; } = string.Empty; // for CreditCard()
     public List<string> Courses { get; set; } = new();      // for RuleForEach()
 }
@@ -208,7 +208,7 @@ RuleFor(student => student.StudentEmail)
 ## 10. Full Example — Extended Validator
 
 ```csharp
-public class StudentValidator : AbstractValidator<Student>
+public class StudentValidator : AbstractValidator<StudentDto>
 {
     public StudentValidator()
     {
