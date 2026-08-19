@@ -194,11 +194,13 @@ RuleFor(student => student.StudentEmail)
 
 ```csharp
 RuleFor(student => student.StudentEmail)
-    .MustAsync(async (email, cancellation) =>
-    {
-        bool exists = await _studentRepository.EmailExistsAsync(email);
-        return !exists;
-    })
+    .MustAsync(async (dto, email, cancellation) =>
+ {
+     // Allow the user's own current email to pass on Update
+     bool exists = await _context.Student
+         .AnyAsync(u => u.Email == email, cancellation);
+     return !exists;
+ })
     .WithMessage("This email is already registered.");
 ```
 
