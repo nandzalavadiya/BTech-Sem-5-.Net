@@ -36,7 +36,8 @@ The Version 1 response is:
     "studentId": 1,
     "studentName": "Nand",
     "studentEmail": "nand@gmail.com"
-    "departmentId": 1
+    "departmentId": 1,
+    "departmentName": "CSE"
   }
 ]
 ```
@@ -45,7 +46,7 @@ Later, we Remove a field:
 
 ```json
 {
-  "departmentId": "1"
+   "studentEmail": "nand@gmail.com"
 }
 ```
 
@@ -253,7 +254,8 @@ Response:
     "studentId": 1,
     "studentName": "Nand",
     "studentEmail": "nand@gmail.com",
-    "departmentId": 1
+    "departmentId": 1,
+    "departmentName": "CSE"
   }
 ]
 ```
@@ -275,7 +277,9 @@ Response:
   {
     "studentId": 1,
     "studentName": "Nand",
-    "studentEmail": "nand@gmail.com"
+    "departmentId": 1,
+    "departmentName": "CSE"
+
   }
 ]
 ```
