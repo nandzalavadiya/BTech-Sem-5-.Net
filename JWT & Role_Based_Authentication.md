@@ -300,19 +300,19 @@ if (app.Environment.IsDevelopment())
 
 **1️⃣ Generate the token — `POST /api/User/login`**
 
-Send the demo credentials (`student` / `123456`). Scalar returns a `200 OK` with a `token` in the response body — copy this value.
+
 
 ![Token Generation](./TokenGeneration.png)
 
 **2️⃣ Call the protected endpoint with the correct token**
 
-Open the **Authentication** section on `GET /api/User`, choose **Bearer**, paste the token you copied (no need to type the `Bearer` prefix — Scalar adds it), and hit **Send**. You get a `200 OK` with the protected data.
+
 
 ![Correct Token Success](./CorrectToken.png)
 
 **3️⃣ Call the protected endpoint with a wrong/missing token**
 
-If the token is missing, edited, expired, or just wrong, `[Authorize]` rejects the request with `401 Unauthorized` — no body is returned.
+
 
 ![Wrong Token 401](./TokenIsWrong.png)
 
