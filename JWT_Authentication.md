@@ -395,13 +395,21 @@ Only 2 Changes
 **2️⃣ Program.cs**
 
 ```csharp
-    builder.Services.AddAuthorization(options =>
+  builder.Services.AddAuthorization(options =>
+ {
+    // Add a custom Authorization Policy named "AdminPageForAccount"
+    options.AddPolicy("AdminPageForAccount", policy =>
     {
-        // Example 1: Simple Role-based Policy
-        options.AddPolicy("AdminPageForAccount", policy =>
-            policy.RequireRole("Admin").RequireClaim("Department", "Account"));
+        // 1. Check whether the logged-in user has the "Admin" role.
+        //    If the user is not an Admin, access is denied (403 Forbidden).
+        policy.RequireRole("Admin")
 
+            // 2. After the Role check passes, check the "Department" claim.
+            //    The Department claim must have the value "Account".
+            //    If not, access is denied (403 Forbidden).
+            .RequireClaim("Department", "Account");
     });
+  });
 ```
 
 **3️⃣ UserController.cs**
