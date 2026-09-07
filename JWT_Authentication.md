@@ -304,7 +304,7 @@ app.MapControllers();
 
 **1️⃣ Generate the token — `POST /api/User/login`**
 
-![Token Generation](./College/JWT/TokenGeneration.png)
+![Token Generation](./JWT/TokenGeneration.png)
 
 **2️⃣ Call the protected endpoint with the correct token**
 
