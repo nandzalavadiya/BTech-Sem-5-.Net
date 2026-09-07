@@ -308,11 +308,11 @@ app.MapControllers();
 
 **2️⃣ Call the protected endpoint with the correct token**
 
-![Correct Token Success](./College/JWT/CorrectToken.png)
+![Correct Token Success](./CorrectToken.png)
 
 **3️⃣ Call the protected endpoint with a wrong/missing token**
 
-![Wrong Token 401](./College/JWT/TokenIsWrong.png)
+![Wrong Token 401](./TokenIsWrong.png)
 
 ```bash
 dotnet run
