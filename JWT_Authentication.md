@@ -304,15 +304,15 @@ app.MapControllers();
 
 **1️⃣ Generate the token — `POST /api/User/login`**
 
-![Token Generation](./TokenGeneration.png)
+![Token Generation](./College/JWT/TokenGeneration.png)
 
 **2️⃣ Call the protected endpoint with the correct token**
 
-![Correct Token Success](./CorrectToken.png)
+![Correct Token Success](./College/JWT/CorrectToken.png)
 
 **3️⃣ Call the protected endpoint with a wrong/missing token**
 
-![Wrong Token 401](./TokenIsWrong.png)
+![Wrong Token 401](./College/JWT/TokenIsWrong.png)
 
 ```bash
 dotnet run
@@ -352,5 +352,65 @@ public async Task<IActionResult> GetAllForAdmin()
 {
     var user = await _context.Users.ToListAsync();
     return Ok(user);
+}
+```
+
+## Step 10: Policy Based Authentication
+
+**Role-Based = "Are you an Admin?" → Yes/No (that's it)**
+
+**Policy-Based = "Are you an Admin AND do you meet this extra condition?"**
+
+### 🔑 Example: Policy-Based Check (Admin Department)
+
+| Admin User | Role    | Department  |
+| ---------- | ------- | ----------- |
+| Admin A    | Admin   | Account     |
+| Admin C    | Admin   | Examination |
+| User D     | Faculty | DIET        |
+
+```csharp
+
+public IActionResult AdminPageForAccount()
+{
+    return Ok("Visible only to Admins with Account Department");
+}
+```
+
+**AdminPageForAccount() I want to Allow this Method Who have Department Account in a Admin**
+
+Only 2 Changes
+**1️⃣ Services/TokenService.cs**
+
+```csharp
+ var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(ClaimTypes.Role, user.UserType.UserTypeName)
+                new Claim("Department", user.Department ?? "")  //Add Line
+            };
+```
+
+**2️⃣ Program.cs**
+
+```csharp
+    builder.Services.AddAuthorization(options =>
+    {
+        // Example 1: Simple Role-based Policy
+        options.AddPolicy("AdminPageForAccount", policy =>
+            policy.RequireRole("Admin").RequireClaim("Department", "Account"));
+
+    });
+```
+
+**3️⃣ UserController.cs**
+
+```csharp
+[Authorize(Policy = "AdminPageForAccount")]
+[HttpGet]
+public IActionResult AdminPageForAccount()
+{
+    return Ok("Visible only to Admins with Account Department");
 }
 ```
