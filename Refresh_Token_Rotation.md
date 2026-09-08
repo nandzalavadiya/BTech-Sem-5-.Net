@@ -128,7 +128,6 @@ public async Task<IActionResult> Login([FromBody] UserLoginDto dto)
 
 ## Step 5: The Refresh Endpoint — Where Rotation Happens
 
-Take `userId` and `refreshToken` as plain method parameters — ASP.NET Core will bind simple types from the query string automatically, no request class needed.
 
 **`Controllers/UserController.cs`**
 
