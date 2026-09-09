@@ -1,0 +1,145 @@
+# Services & Repository Pattern in ASP.NET Core
+
+![Refresh Token](./Service&Repo.png)
+
+## Why is this Service/Repository Required?
+
+1. **Separation of Concerns** – Separates HTTP, business, and database logic.
+2. **Controller** – Handles only requests and responses.
+3. **Service** – Handles business logic and validations.
+4. **Repository** – Handles database and EF Core operations.
+5. **Loose Coupling** – Reduces dependency between Controller and Database.
+6. **Easy Testing & Maintenance** – Makes code easier to test, reuse, and maintain.
+
+## Common Issues Without Service/Repository Pattern
+
+Without this pattern, **Controller becomes tightly coupled with EF Core and database logic**.  
+Business logic gets **mixed with HTTP code**, making the project harder to **test, maintain, and scale**.
+
+## When to Use Service/Repository Pattern?
+
+Use it mainly for **medium/large projects** with complex business logic.  
+It is useful for **easy testing, maintenance, and scalability**.  
+Examples: **E-commerce, Banking, Hospital, ERP, HR Management** systems.
+
+### Example: Current Code Like `UserController/Add()`
+
+```csharp
+ [HttpPost]
+ public async Task<IActionResult> Add(UserDto dto)
+ {
+    var validationResult = await _userValidator.ValidateAsync(dto);
+    if (!validationResult.IsValid)
+    {
+        return BadRequest(validationResult.Errors);
+    }
+    try
+    {
+        var entity = new User()
+        {
+            UserTypeID = (int)dto.UserTypeID,
+            FullName = dto.FullName,
+            UserCode = dto.UserCode,
+            Email = dto.Email,
+            Password = dto.Password,
+            MobileNumber = dto.MobileNumber,
+            ProfilePicturePath = dto.ProfilePicturePath,
+            IsActive = true,
+            IsDeleted = false
+        };
+        _context.Users.Add(entity);
+        _context.SaveChanges();
+        return Ok(new { Status = "Success", Message = "Record Inserted" });
+    }
+    catch (Exception ex)
+    {
+        var message = ex.Message;
+        return Ok(message);
+    }
+ }
+
+```
+
+### Convert to Service/Repository
+
+#### Step - 1 Add the New Folder Repository/UserRepository
+
+```csharp
+public class UserRepository
+{
+    private readonly AppDbContext _context;
+
+    public UserRepository(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task AddAsync(User user)
+    {
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+    }
+}
+```
+
+#### Step - 2 Add the New Folder Service/UserService
+
+```csharp
+public class UserService
+{
+    private readonly UserRepository _userRepository;
+
+    public UserService(UserRepository userRepository)
+    {
+        _userRepository = userRepository;
+    }
+
+    public async Task<string> AddAsync(UserDto dto)
+    {
+        var user = new User
+        {
+            UserTypeID = (int)dto.UserTypeID,
+            FullName = dto.FullName,
+            UserCode = dto.UserCode,
+            Email = dto.Email,
+            Password = dto.Password,
+            MobileNumber = dto.MobileNumber,
+            ProfilePicturePath = dto.ProfilePicturePath,
+            IsActive = true,
+            IsDeleted = false
+        };
+
+        await _userRepository.AddAsync(user);
+
+        return "Record Inserted";
+    }
+}
+```
+
+#### Step - 3 Update UserController
+
+```csharp
+ [ApiController]
+ [Route("api/[controller]/[action]")]
+
+ public class UserController : ControllerBase
+ {
+  private readonly UserService _userService;
+  private readonly UserValidator _userValidator;
+  public UserController(UserValidator userValidator, UserService userService)
+  {
+      _userValidator=userValidator;
+      _userService = userService;
+  }
+  [HttpPost]
+  public async Task<IActionResult> Add(UserDto dto)
+  {
+      var validationResult = await _userValidator.ValidateAsync(dto);
+      if (!validationResult.IsValid)
+          return BadRequest(validationResult.Errors);
+
+      var message = _userService.Add(dto);
+      return Ok(new { Message = message });
+  }
+ }
+```
