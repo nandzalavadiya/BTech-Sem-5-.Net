@@ -1,6 +1,6 @@
 # Services & Repository Pattern in ASP.NET Core
 
-![Refresh Token](./Service&Repo.png)
+![Refresh Token](./Repo & Services.jpeg)
 
 ## Why is this Service/Repository Required?
 
