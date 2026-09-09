@@ -1,3 +1,4 @@
+
 # Services & Repository Pattern in ASP.NET Core
 
 ![Refresh Token](./Service&Repo.png)
@@ -138,7 +139,7 @@ public class UserService
       if (!validationResult.IsValid)
           return BadRequest(validationResult.Errors);
 
-      var message = _userService.Add(dto);
+      var message =await _userService.Add(dto);
       return Ok(new { Message = message });
   }
  }
