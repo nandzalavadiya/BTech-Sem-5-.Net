@@ -160,5 +160,4 @@ public class UserService : IUserService
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 ```
-## Final Project Structure
-![Project Structure](./Repo&Services%20Structure.png)
+
