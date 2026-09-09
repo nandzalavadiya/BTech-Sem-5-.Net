@@ -2,6 +2,9 @@
 
 ![Service&Repository Daigram](./Repo%20&%20Services.jpeg)
 
+
+![Service & Repositor Flow](./Service&Repo.png).
+
 ## Why is this Service/Repository Required?
 
 1. **Separation of Concerns** – Separates HTTP, business, and database logic.
