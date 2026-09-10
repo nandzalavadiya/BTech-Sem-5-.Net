@@ -15,10 +15,11 @@
 
 ## Common Issues Without Service/Repository Pattern
 
-1 Without this pattern, **Controller becomes tightly coupled with EF Core and database logic**.
-2 Difficult Unit Testing – Direct database dependencies make Controllers harder to test and mock.
-3 Poor Code Reusability – Business logic inside Controllers is difficult to reuse in other parts of the application.
-4 Hard to Scale – As the application grows, Controllers become increasingly complex and difficult to manage.
+1. **Tight Coupling** – Controller becomes directly dependent on EF Core and database implementation.
+2. **Difficult Unit Testing** – Direct database dependencies make Controllers harder to mock and test.
+3. **Scalability Issues** – As the application grows, Controllers become larger and harder to manage.
+4. **Poor Reusability** – Business logic inside Controllers is difficult to reuse in other parts of the application.
+
 
 ## When to Use Service/Repository Pattern?
 
