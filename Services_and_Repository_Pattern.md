@@ -3,7 +3,9 @@
 ![Service&Repository Daigram](./Repo%20&%20Services.jpeg)
 
 
-![Service & Repositor Flow](./Service&Repo.png).
+
+<img width="1214" height="217" alt="Service Repo" src="https://github.com/user-attachments/assets/218b6b7c-7ae8-4474-b894-7e4d1fc35828" />
+
 
 ## Why is this Service/Repository Required?
 
