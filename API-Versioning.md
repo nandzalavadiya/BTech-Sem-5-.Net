@@ -5,13 +5,12 @@ API versioning means updating your software without breaking the older versions 
 <img width="1311" height="745" alt="Versioning Daigram" src="https://github.com/user-attachments/assets/d2e5f75b-9d5e-4592-b800-baea837e457e" />
 
 # 1. Type of Versioning
-
-| #   | Strategy          | Client sends version via                   | Example                                  |
-| --- | ----------------- | ------------------------------------------ | ---------------------------------------- |
-| 1   | URL Versioning    | The URL path itself                        | `GET /api/v1/students`                   |
-| 2   | Query Versioning  | A query string parameter                   | `GET /api/products?api-version=1.0`      |
-| 3   | Header Versioning | A custom request header                    | `GET /api/orders` + `X-Api-Version: 1.0` |
-| 4   | Media Type Ver.   | The `Accept` header's media type parameter | `Accept: application/json;v=1.0`         |
+| # | Strategy | Client Sends Version Via | Example |
+|---|---|---|---|
+| 1 | URL Versioning | The URL path itself | `GET /api/v1/students` |
+| 2 | Query String Versioning | A query string parameter | `GET /api/products?api-version=1.0` |
+| 3 | Header Versioning | A custom request header | `GET /api/orders` + `X-Api-Version: 1.0` |
+| 4 | **Consumer-Based Versioning** | **Consumer ID; server determines the API version from the consumer mapping** | `GET /api/products` + `Consumer-Id: Client-A` → **V1** |
 
 ---
 
