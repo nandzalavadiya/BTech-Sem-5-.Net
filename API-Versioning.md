@@ -2,7 +2,7 @@
 
 API versioning means updating your software without breaking the older versions that your users are already using.
 
-![Versioning Daigram](<./Versioning Daigram.png>)
+<img width="1311" height="745" alt="Versioning Daigram" src="https://github.com/user-attachments/assets/d2e5f75b-9d5e-4592-b800-baea837e457e" />
 
 # 1. Type of Versioning
 
