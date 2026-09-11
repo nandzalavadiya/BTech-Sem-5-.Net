@@ -1,4 +1,3 @@
-<img width="217" height="150" alt="spms-ordering-mockup (2) (1)" src="https://github.com/user-attachments/assets/49858228-153f-4226-8113-424b38e10f6e" /># LINQ Ordering Operations — Student Management System
 
 ## 📊 Visualize First: Same Student List, 5 Real Diffrent Way
 
