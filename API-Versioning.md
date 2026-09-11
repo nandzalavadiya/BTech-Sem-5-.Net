@@ -23,7 +23,7 @@ API versioning means updating your software without breaking the older versions 
 Open a terminal in your project folder and run:
 
 ```bash
-dotnet add package Asp.Versioning.Mvc
+dotnet add package Asp.Versioning.Http
 dotnet add package Asp.Versioning.Mvc.ApiExplorer
 ```
 
