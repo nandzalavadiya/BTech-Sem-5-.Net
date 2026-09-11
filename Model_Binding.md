@@ -30,7 +30,6 @@
 | `[FromForm]`   | Form data (`multipart/form-data`) | File uploads, HTML forms              |
 | `[FromHeader]` | HTTP request headers              | Tokens, API keys, metadata            |
 
-> **Note:** If you don't mention a binding attribute, ASP.NET Core automatically binds it (simple types → Route/Query, complex types → Body) — except `[FromHeader]`, which is never inferred and must always be written explicitly.
 
 ---
 
