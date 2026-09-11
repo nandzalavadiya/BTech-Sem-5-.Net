@@ -52,6 +52,8 @@ public IActionResult GetStudents([FromQuery] int age, [FromQuery] string city)
     return Ok($"Age: {age}, City: {city}");
 }
 ```
+<img width="1738" height="812" alt="FromQuery" src="https://github.com/user-attachments/assets/57ca8217-23ef-4331-a18b-39dd734effde" />
+
 
 ---
 
