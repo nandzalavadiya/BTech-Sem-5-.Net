@@ -1,8 +1,151 @@
-# LINQ Ordering Operations — Student Management System
+<img width="217" height="150" alt="spms-ordering-mockup (2) (1)" src="https://github.com/user-attachments/assets/49858228-153f-4226-8113-424b38e10f6e" /># LINQ Ordering Operations — Student Management System
 
 ## 📊 Visualize First: Same Student List, 5 Real Diffrent Way
 
 ![Student Management System — Ordering Views](<./spms-ordering-mockup%20(2).svg>)
+![Uploading spms<svg viewBox="0 0 1300 900" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="sidebar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101a33"/>
+      <stop offset="100%" stop-color="#0b1226"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1300" height="900" fill="#eef1f6"/>
+
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="220" height="900" fill="url(#sidebar)"/>
+  <text x="30" y="45" fill="#ffffff" font-size="18" font-weight="700">🎓 SPMS</text>
+  <text x="30" y="64" fill="#8fa1c7" font-size="11">Student Portal</text>
+
+  <rect x="16" y="95" width="188" height="34" rx="8" fill="#1d4ed8"/>
+  <text x="34" y="117" fill="#ffffff" font-size="12" font-weight="600">📊 Student Records</text>
+
+  <text x="34" y="160" fill="#a9b6d0" font-size="12">👤 My Project</text>
+  <text x="34" y="192" fill="#a9b6d0" font-size="12">📝 My Tasks</text>
+  <text x="34" y="224" fill="#a9b6d0" font-size="12">📅 Calendar</text>
+  <text x="34" y="256" fill="#a9b6d0" font-size="12">📈 Performance</text>
+
+  <!-- Top bar -->
+  <rect x="220" y="0" width="1080" height="70" fill="#ffffff"/>
+  <text x="250" y="40" font-size="18" font-weight="700" fill="#1a2338">Class 10-A &amp; 10-B student list, arranged five different ways</text>
+  <circle cx="1220" cy="35" r="18" fill="#dbe4ff"/>
+  <text x="1220" y="40" text-anchor="middle" font-size="14">AJ</text>
+
+  <!-- ============ CARD 1: OrderBy ============ -->
+  <g>
+    <rect x="240" y="95" width="330" height="230" rx="12" fill="#ffffff" stroke="#e3e7ef"/>
+    <rect x="240" y="95" width="330" height="40" rx="12" fill="#e7f0ff"/>
+    <rect x="240" y="115" width="330" height="20" fill="#e7f0ff"/>
+    <text x="258" y="121" font-size="13" font-weight="700" fill="#1d4ed8">OrderBy(s =&gt; s.RollNo)</text>
+    <text x="258" y="152" font-size="10" fill="#7a8399">Roll No.</text>
+    <text x="360" y="152" font-size="10" fill="#7a8399">Name</text>
+    <text x="470" y="152" font-size="10" fill="#7a8399">Marks</text>
+
+    <!-- rows ascending roll no -->
+    <g font-size="12" fill="#1a2338">
+      <text x="258" y="176">1</text><text x="360" y="176">Aman</text><text x="470" y="176">91</text>
+      <text x="258" y="200">2</text><text x="360" y="200">Sneha</text><text x="470" y="200">76</text>
+      <text x="258" y="224">3</text><text x="360" y="224">Riya</text><text x="470" y="224">88</text>
+      <text x="258" y="248">4</text><text x="360" y="248">Zara</text><text x="470" y="248">65</text>
+      <text x="258" y="272">5</text><text x="360" y="272">Kabir</text><text x="470" y="272">91</text>
+    </g>
+    <line x1="258" y1="160" x2="552" y2="160" stroke="#eef1f6"/>
+    <text x="258" y="304" font-size="10" fill="#2f9e5b">↑ Ascending by Roll No — the class register</text>
+  </g>
+
+  <!-- ============ CARD 2: OrderByDescending ============ -->
+  <g>
+    <rect x="590" y="95" width="330" height="230" rx="12" fill="#ffffff" stroke="#e3e7ef"/>
+    <rect x="590" y="95" width="330" height="40" rx="12" fill="#fdeee3"/>
+    <rect x="590" y="115" width="330" height="20" fill="#fdeee3"/>
+    <text x="608" y="121" font-size="13" font-weight="700" fill="#c2540d">OrderByDescending(s =&gt; s.Marks)</text>
+    <text x="608" y="152" font-size="10" fill="#7a8399">Rank</text>
+    <text x="670" y="152" font-size="10" fill="#7a8399">Name</text>
+    <text x="800" y="152" font-size="10" fill="#7a8399">Marks</text>
+
+    <g font-size="12" fill="#1a2338">
+      <text x="608" y="176">🥇 1</text><text x="670" y="176">Aman</text><text x="800" y="176">91</text>
+      <text x="608" y="200">🥈 2</text><text x="670" y="200">Kabir</text><text x="800" y="200">91</text>
+      <text x="608" y="224">🥉 3</text><text x="670" y="224">Riya</text><text x="800" y="224">88</text>
+      <text x="608" y="248">4</text><text x="670" y="248">Sneha</text><text x="800" y="248">76</text>
+      <text x="608" y="272">5</text><text x="670" y="272">Zara</text><text x="800" y="272">65</text>
+    </g>
+    <line x1="608" y1="160" x2="900" y2="160" stroke="#eef1f6"/>
+    <text x="608" y="304" font-size="10" fill="#c2540d">↓ Descending by Marks — leaderboard view</text>
+  </g>
+
+  <!-- ============ CARD 3: ThenBy ============ -->
+  <g>
+    <rect x="940" y="95" width="330" height="230" rx="12" fill="#ffffff" stroke="#e3e7ef"/>
+    <rect x="940" y="95" width="330" height="40" rx="12" fill="#e9f7ee"/>
+    <rect x="940" y="115" width="330" height="20" fill="#e9f7ee"/>
+    <text x="958" y="121" font-size="13" font-weight="700" fill="#1c6b3c">.OrderBy(Class).ThenBy(Name)</text>
+    <text x="958" y="152" font-size="10" fill="#7a8399">Class</text>
+    <text x="1030" y="152" font-size="10" fill="#7a8399">Name</text>
+    <text x="1150" y="152" font-size="10" fill="#7a8399">Marks</text>
+
+    <g font-size="12" fill="#1a2338">
+      <rect x="950" y="164" width="240" height="18" fill="#f4faf6"/>
+      <text x="958" y="176">10-A</text><text x="1030" y="176">Kabir</text><text x="1150" y="176">91</text>
+      <text x="958" y="200">10-A</text><text x="1030" y="200">Riya</text><text x="1150" y="200">88</text>
+      <text x="958" y="224">10-A</text><text x="1030" y="224">Zara</text><text x="1150" y="224">65</text>
+      <rect x="950" y="236" width="240" height="18" fill="#f4faf6"/>
+      <text x="958" y="248">10-B</text><text x="1030" y="248">Aman</text><text x="1150" y="248">91</text>
+      <text x="958" y="272">10-B</text><text x="1030" y="272">Sneha</text><text x="1150" y="272">76</text>
+    </g>
+    <line x1="958" y1="160" x2="1250" y2="160" stroke="#eef1f6"/>
+    <text x="958" y="304" font-size="10" fill="#1c6b3c">Grouped by Class, A→Z inside each class</text>
+  </g>
+
+  <!-- ============ CARD 4: ThenByDescending ============ -->
+  <g>
+    <rect x="240" y="345" width="330" height="230" rx="12" fill="#ffffff" stroke="#e3e7ef"/>
+    <rect x="240" y="345" width="330" height="40" rx="12" fill="#fdf1e3"/>
+    <rect x="240" y="365" width="330" height="20" fill="#fdf1e3"/>
+    <text x="258" y="371" font-size="13" font-weight="700" fill="#8a4f0c">.OrderBy(Class).ThenByDescending(Marks)</text>
+    <text x="258" y="402" font-size="10" fill="#7a8399">Class</text>
+    <text x="330" y="402" font-size="10" fill="#7a8399">Name</text>
+    <text x="450" y="402" font-size="10" fill="#7a8399">Marks</text>
+
+    <g font-size="12" fill="#1a2338">
+      <rect x="250" y="414" width="240" height="18" fill="#fffaf2"/>
+      <text x="258" y="426">10-A</text><text x="330" y="426">Kabir</text><text x="450" y="426">91</text>
+      <text x="258" y="450">10-A</text><text x="330" y="450">Riya</text><text x="450" y="450">88</text>
+      <text x="258" y="474">10-A</text><text x="330" y="474">Zara</text><text x="450" y="474">65</text>
+      <rect x="250" y="486" width="240" height="18" fill="#fffaf2"/>
+      <text x="258" y="498">10-B</text><text x="330" y="498">Aman</text><text x="450" y="498">91</text>
+      <text x="258" y="522">10-B</text><text x="330" y="522">Sneha</text><text x="450" y="522">76</text>
+    </g>
+    <line x1="258" y1="410" x2="552" y2="410" stroke="#eef1f6"/>
+    <text x="258" y="554" font-size="10" fill="#8a4f0c">Grouped by Class, top scorer first inside each</text>
+  </g>
+
+  <!-- ============ CARD 5: Reverse ============ -->
+  <g>
+    <rect x="590" y="345" width="330" height="230" rx="12" fill="#ffffff" stroke="#e3e7ef"/>
+    <rect x="590" y="345" width="330" height="40" rx="12" fill="#eef0fb"/>
+    <rect x="590" y="365" width="330" height="20" fill="#eef0fb"/>
+    <text x="608" y="371" font-size="13" font-weight="700" fill="#3c3494">.OrderBy(s =&gt; s.RollNo).Reverse()</text>
+    <text x="608" y="402" font-size="10" fill="#7a8399">Roll No.</text>
+    <text x="700" y="402" font-size="10" fill="#7a8399">Name</text>
+    <text x="800" y="402" font-size="10" fill="#7a8399">Marks</text>
+
+    <g font-size="12" fill="#1a2338">
+      <text x="608" y="426">5</text><text x="700" y="426">Kabir</text><text x="800" y="426">91</text>
+      <text x="608" y="450">4</text><text x="700" y="450">Zara</text><text x="800" y="450">65</text>
+      <text x="608" y="474">3</text><text x="700" y="474">Riya</text><text x="800" y="474">88</text>
+      <text x="608" y="498">2</text><text x="700" y="498">Sneha</text><text x="800" y="498">76</text>
+      <text x="608" y="522">1</text><text x="700" y="522">Aman</text><text x="800" y="522">91</text>
+    </g>
+    <line x1="608" y1="410" x2="900" y2="410" stroke="#eef1f6"/>
+    <text x="608" y="554" font-size="10" fill="#3c3494">Sequence flipped — newest admission on top</text>
+  </g>
+
+  <text x="250" y="610" font-size="11" fill="#9aa3b5">© Student Project Management System — LINQ Ordering Reference</text>
+</svg>
+-ordering-mockup (2) (1).svg…]()
+
 
 ## The Model We'll Use
 
