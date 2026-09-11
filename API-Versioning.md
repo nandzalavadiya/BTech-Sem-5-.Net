@@ -9,12 +9,12 @@ API versioning means updating your software without breaking the older versions 
 
 # 1. Type of Versioning
 
-| #   | Strategy                      | Client Sends Version Via                                                     | Example                                                |
-| --- | ----------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------ |
-| 1   | URL Versioning                | The URL path itself                                                          | `GET /api/v1/students`                                 |
-| 2   | Query String Versioning       | A query string parameter                                                     | `GET /api/products?api-version=1.0`                    |
-| 3   | Header Versioning             | A custom request header                                                      | `GET /api/orders` + `X-Api-Version: 1.0`               |
-| 4   | **Consumer-Based Versioning** | **Consumer ID; server determines the API version from the consumer mapping** | `GET /api/products` + `Consumer-Id: Client-A` → **V1** |
+| #   | Strategy                      | Client Sends Version Via                                                     | Example                                                | Usecase |
+| --- | ----------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------ | ------- |
+| 1   | URL Versioning                | The URL path itself                                                          | `GET /api/v1/students`                                 | Twitter API, GitHub API :- Switching Between Old & New App Version |
+| 2   | Query String Versioning       | A query string parameter                                                     | `GET /api/products?api-version=1.0`                    | Amazon Product API, Flipkart API :- Applying a Filter |
+| 3   | Header Versioning             | A custom request header                                                      | `GET /api/orders` + `X-Api-Version: 1.0`               | WhatsApp, Instagram API :- Auto-Checking App Version in Background |
+| 4   | **Consumer-Based Versioning** | **Consumer ID; server determines the API version from the consumer mapping** | `GET /api/products` + `Consumer-Id: Client-A` → **V1** | Netflix, Banking Apps :- Recognizing Your Device/Account Automatically |
 
 ---
 
