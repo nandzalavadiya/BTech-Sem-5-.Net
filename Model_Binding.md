@@ -64,7 +64,7 @@ public IActionResult GetStudents([FromQuery] int age, [FromQuery] string city)
 Reads values that are part of the **URL path itself**, defined in the route template with `{ }`.
 
 ```
-
+GET /api/students/1
 ```
 
 ### Example
@@ -76,6 +76,7 @@ public IActionResult GetStudent([FromRoute] int id)
     return Ok($"Student Id: {id}");
 }
 ```
+<img width="1731" height="807" alt="FromRoute" src="https://github.com/user-attachments/assets/d67995c7-c2f5-442e-9e1a-ba0313a5376b" />
 
 ---
 
@@ -111,6 +112,7 @@ Request body (JSON):
   "age": 21
 }
 ```
+<img width="1729" height="777" alt="FromBody" src="https://github.com/user-attachments/assets/d6229921-c27e-41fe-b5c9-797b23d1eb23" />
 
 ---
 
@@ -164,6 +166,7 @@ Request header:
 ```
 Authorization: Bearer abc123xyz
 ```
+<img width="1737" height="761" alt="FromHeader" src="https://github.com/user-attachments/assets/8f6a4bd6-f977-4129-8422-46119016cf02" />
 
 ---
 
