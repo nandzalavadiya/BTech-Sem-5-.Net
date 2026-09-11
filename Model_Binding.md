@@ -62,7 +62,9 @@ public IActionResult GetStudents([FromQuery] int age, [FromQuery] string city)
 Reads values that are part of the **URL path itself**, defined in the route template with `{ }`.
 
 ```
-GET /api/students/5
+
+<img width="1731" height="807" alt="FromRoute" src="https://github.com/user-attachments/assets/7d5daba5-cede-4d2d-9db3-f3563d4fe7a5" />
+
 ```
 
 ### Example
