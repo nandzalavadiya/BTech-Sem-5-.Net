@@ -137,6 +137,7 @@ Reads data sent as **form data** (`multipart/form-data` or `application/x-www-fo
         return Ok($"Photo for student {id}: {photo.FileName}");
     }
 ```
+<img width="1711" height="838" alt="FromForm" src="https://github.com/user-attachments/assets/1a44eb70-dbb7-4731-8f41-4697d5e7123c" />
 
 ```
 
