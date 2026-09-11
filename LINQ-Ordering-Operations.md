@@ -1,7 +1,7 @@
 
 ## 📊 Visualize First: Same Student List, 5 Real Diffrent Way
 
-
+![Student Management System — Ordering Views](<./Ordering.png>)
 ## The Model We'll Use
 
 ```csharp
