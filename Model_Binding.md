@@ -63,8 +63,6 @@ Reads values that are part of the **URL path itself**, defined in the route temp
 
 ```
 
-<img width="1731" height="807" alt="FromRoute" src="https://github.com/user-attachments/assets/aa2358be-f0a8-413c-ad74-589edab264f5" />
-
 ```
 
 ### Example
