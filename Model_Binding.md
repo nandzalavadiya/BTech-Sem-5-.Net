@@ -131,11 +131,11 @@ Reads data sent as **form data** (`multipart/form-data` or `application/x-www-fo
 ### Example — Simple Form
 
 ```csharp
-[HttpPost("register")]
-public IActionResult Register([FromForm] string username, [FromForm] string password)
-{
-    return Ok($"Registered: {username}");
-}
+   [HttpPost("{id}/photo")]
+    public IActionResult UploadPhoto([FromRoute] int id, [FromForm] IFormFile photo)
+    {
+        return Ok($"Photo for student {id}: {photo.FileName}");
+    }
 ```
 
 ```
@@ -178,51 +178,4 @@ Authorization: Bearer abc123xyz
 
 ---
 
-## 8. Full Example — All Together in One Controller
 
-```csharp
-using Microsoft.AspNetCore.Mvc;
-
-namespace StudentProjectAPI.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class StudentsController : ControllerBase
-{
-    // FromQuery: /api/students?age=20
-    [HttpGet]
-    public IActionResult GetAll([FromQuery] int? age)
-    {
-        return Ok($"Filtering by age: {age}");
-    }
-
-    // FromRoute: /api/students/5
-    [HttpGet("{id}")]
-    public IActionResult GetById([FromRoute] int id)
-    {
-        return Ok($"Student Id: {id}");
-    }
-
-    // FromBody: JSON in request body
-    [HttpPost]
-    public IActionResult Create([FromBody] CreateStudentDto dto)
-    {
-        return Ok($"Created: {dto.Name}");
-    }
-
-    // FromForm: file upload
-    [HttpPost("{id}/photo")]
-    public IActionResult UploadPhoto([FromRoute] int id, [FromForm] IFormFile photo)
-    {
-        return Ok($"Photo for student {id}: {photo.FileName}");
-    }
-
-    // FromHeader: reading a custom header
-    [HttpGet("check")]
-    public IActionResult Check([FromHeader(Name = "X-Client-Version")] string version)
-    {
-        return Ok($"Client version: {version}");
-    }
-}
-
-```
