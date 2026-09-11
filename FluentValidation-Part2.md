@@ -7,9 +7,9 @@
 ## 1.Student Model
 
 ```csharp
-namespace EFCoreCrudDemo.Dtos;
+namespace EFCoreCrudDemo.Models;
 
-public class StudentDto
+public class Student
 {
     public int StudentId { get; set; }
     public string StudentName { get; set; } = string.Empty;
@@ -17,7 +17,7 @@ public class StudentDto
     public int DepartmentId { get; set; }
     public int Age { get; set; }
 
-    public int RoleId { get; set; }              // for IsInEnum()
+    public UserRole Role { get; set; }              // for IsInEnum()
     public string CardNumber { get; set; } = string.Empty; // for CreditCard()
     public List<string> Courses { get; set; } = new();      // for RuleForEach()
 }
@@ -192,25 +192,29 @@ RuleFor(student => student.StudentEmail)
 
 ## 9. `MustAsync()` — Asynchronous Custom Validation
 
+`Must()` (from Part 1's `StudentValidator` example) runs synchronously. `MustAsync()` is used when your check needs to **call a database, an API, or any awaitable operation** — for example, checking if an email is already taken.
+
 ```csharp
 RuleFor(student => student.StudentEmail)
     .MustAsync(async (email, cancellation) =>
- {
-     // Allow the user's own current email to pass on Update
-     bool exists = await _context.Student
-         .AnyAsync(u => u.Email == email, cancellation);
-     return !exists;
- })
+    {
+        bool exists = await _studentRepository.EmailExistsAsync(email);
+        return !exists;
+    })
     .WithMessage("This email is already registered.");
 ```
 
+**Notes:**
+
+- Never use `Must()` for database calls — it's synchronous and will block the request thread. `MustAsync()` is the correct tool.
+- The `cancellation` token lets ASP.NET Core cancel the check if the client disconnects early.
 
 ---
 
 ## 10. Full Example — Extended Validator
 
 ```csharp
-public class StudentValidator : AbstractValidator<StudentDto>
+public class StudentValidator : AbstractValidator<Student>
 {
     public StudentValidator()
     {
