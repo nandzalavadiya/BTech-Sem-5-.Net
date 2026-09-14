@@ -58,13 +58,17 @@ dotnet add MyWebAPI.Tests reference MyWebAPI
 
 ### How to Create a Test Project
 
-![View > Test Explorer](./Step-1_Create_Test_Project.png)
+<img width="1247" height="915" alt="Step-1_Create_Test_Project" src="https://github.com/user-attachments/assets/1338565c-cffa-490e-88d7-ec84a393b864" />
 
-![View > Test Explorer](./Step-2_Create_Test_Project.png)
 
-![View > Test Explorer](./Step_3_Create_Test_Project.png)
+<img width="1905" height="1011" alt="Step-2_Create_Test_Project" src="https://github.com/user-attachments/assets/2194aeaf-b988-4d69-86b2-d1b91cb91f54" />
 
-![View > Test Explorer](./Step_4_Create_Test_Project.png)
+
+<img width="1846" height="1036" alt="Step_3_Create_Test_Project" src="https://github.com/user-attachments/assets/1e621ec1-52cd-4bff-822d-98b564840722" />
+
+
+<img width="972" height="677" alt="Step_4_Create_Test_Project" src="https://github.com/user-attachments/assets/9e3f361d-d345-416f-8b78-49680ee011d1" />
+
 
 ---
 
