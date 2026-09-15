@@ -16,17 +16,10 @@ Testing means checking that your code works correctly before it goes live.
 
 ---
 
-## Step 2 — xUnit vs Mock (Moq)
-
-| xUnit                                         | Moq                                                           |
-| --------------------------------------------- | ------------------------------------------------------------- |
-| Framework to **write & run** tests            | It creates fake implementations of dependencies.              |
-| Gives structure: `[Fact]`, `[Theory]`, Assert | Fakes DB, APIs, services so tests don't depend on them        |
-| Answers: "Does this logic work?"              | Answers: "How do I test logic without the real database/API?" |
 
 ---
 
-## Step 3 — Required Packages
+## Step 2 — Required Packages
 
 ```
 Microsoft.NET.Test.Sdk
@@ -44,7 +37,7 @@ dotnet add package xunit.runner.visualstudio
 
 ---
 
-## Step 4 — Create Test Project
+## Step 3 — Create Test Project
 
 **Option A — CLI:**
 
@@ -72,9 +65,9 @@ dotnet add MyWebAPI.Tests reference MyWebAPI
 
 ---
 
-## Step 5 — Writing xUnit Tests: [Fact], [Theory], [InlineData]
+## Step 4 — Writing xUnit Tests: [Fact], [Theory], [InlineData]
 
-### 5.1 `[Fact]` — Simple Test (no parameters)
+### 4.1 `[Fact]` — Simple Test (no parameters)
 
 Controller:
 
@@ -107,7 +100,7 @@ public void GetStudent_ReturnOkResult()
 
 ---
 
-### 5.2 `[Theory]` + `[InlineData]` — Test with Multiple Inputs
+### 4.2 `[Theory]` + `[InlineData]` — Test with Multiple Inputs
 
 Used when you want to run the **same test logic** with **different input values**.
 
@@ -166,7 +159,7 @@ namespace Testing.Tests
 <img width="1867" height="881" alt="Failed" src="https://github.com/user-attachments/assets/2b15bcf1-bd7c-4c7e-a3de-9dfba1a7724a" />
 
 
-## Step 6 — Other Common Assert Methods Example
+## Step 5 — Other Common Assert Methods Example
 
 ```csharp
 public class StudentController
