@@ -16,25 +16,25 @@ Testing means checking that your code works correctly before it goes live.
 
 ---
 
-
----
-
-## Step 2 — Required Packages
-
+## Step 2 - Create an API Project and Add described methods
+```csharp
+[HttpGet]
+public string GetStudents()
+{
+    return $"Age: 18, City: Rajkot";
+}
 ```
-Microsoft.NET.Test.Sdk
-xunit
-xunit.runner.visualstudio
+Service:
+
+```csharp
+public class CalculatorService
+{
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+}
 ```
-
-Install via CLI:
-
-```bash
-dotnet add package Microsoft.NET.Test.Sdk
-dotnet add package xunit
-dotnet add package xunit.runner.visualstudio
-```
-
 ---
 
 ## Step 3 — Create Test Project
@@ -64,28 +64,39 @@ dotnet add MyWebAPI.Tests reference MyWebAPI
 
 
 ---
+## Step 4 — Test Project Configuration
 
-## Step 4 — Writing xUnit Tests: [Fact], [Theory], [InlineData]
+Install Required Packages
 
-### 4.1 `[Fact]` — Simple Test (no parameters)
-
-Controller:
-
-```csharp
-[HttpGet]
-public string GetStudents()
-{
-    return $"Age: 18, City: Rajkot";
-}
+```
+Microsoft.NET.Test.Sdk
+xunit
+xunit.runner.visualstudio
 ```
 
+Install via CLI:
+
+```bash
+dotnet add package Microsoft.NET.Test.Sdk
+dotnet add package xunit
+dotnet add package xunit.runner.visualstudio
+```
 **Creating the test file (Right-Click):**
 
 1. Right-click the `MyWebAPI.Tests` project → **Add** → **Class**
 2. Name it `StudentControllerTest.cs` → **Add**
-3. Write the test method inside this class (shown below)
+---
 
-Test — checking the **return type**:
+## Step 5 — Writing xUnit Tests: [Fact], [Theory], [InlineData]
+
+[Fact] — Used when methods doesn't requires any parameters and only need to execute the test case once
+[Theory] — Used when method have parameters and we want to test multiple time the same method with different data
+[InlineData] OR [ClassData] - Provides testing data that we want to use for particular testing
+Controller:
+
+**Write the test method inside this class (shown below)**
+
+In below example, we do check only the **return type** and method doesn't required any parameters, so we can use [Fact]:
 
 ```csharp
 [Fact]
@@ -98,23 +109,7 @@ public void GetStudent_ReturnOkResult()
 }
 ```
 
----
-
-### 4.2 `[Theory]` + `[InlineData]` — Test with Multiple Inputs
-
-Used when you want to run the **same test logic** with **different input values**.
-
-Service:
-
-```csharp
-public class CalculatorService
-{
-    public int Add(int a, int b)
-    {
-        return a + b;
-    }
-}
-```
+In below example, we want to test **same test logic** with **different input values** so we will use the [Theory] with [InlineData] for providing different values
 
 Test:
 
@@ -125,7 +120,7 @@ namespace Testing.Tests
 {
     public class CalculatorServiceTests
     {
-        [Theory]
+        [Theory] // Allows to run the test case method multiple time using different input provided by [InlineData]
         [InlineData(10, 20, 30)]
         [InlineData(5, 5, 10)]
         [InlineData(-10, 20, 10)]
