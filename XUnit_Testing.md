@@ -139,6 +139,46 @@ namespace Testing.Tests
 }
 ```
 
+In the below example, we want to test the **same test logic** with **different input values**, so we will use the `[Theory]` with `[ClassData]` to provide different test values from a separate test data class.
+
+Test:
+
+```csharp
+using Xunit;
+
+namespace Testing.Tests
+{
+    public class CalculatorTestData : TheoryData<int, int, int>
+    {
+        public CalculatorTestData()
+        {
+            Add(10, 20, 30);
+            Add(5, 5, 10);
+            Add(-10, 20, 10);
+            Add(0, 0, 0);
+        }
+    }
+}
+using Testing.Services;
+
+namespace Testing.Tests
+{
+    public class CalculatorServiceTests
+    {
+        [Theory]
+        [ClassData(typeof(CalculatorTestData))]
+        public void Add_ReturnsCorrectResult(int a, int b, int expected)
+        {
+            var service = new CalculatorService();
+
+            var result = service.Add(a, b);
+
+            Assert.Equal(expected, result);
+        }
+    }
+}
+
+```
 ### How to Check Testing
 
 ## Step - 1
