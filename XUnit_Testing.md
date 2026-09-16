@@ -162,10 +162,7 @@ namespace Testing.Tests
         // Test Method
         [Theory]
         [MemberData(nameof(CalculatorTestData))]
-        public void Add_ReturnsCorrectResult(
-            int a,
-            int b,
-            int expected)
+        public void Add_ReturnsCorrectResult(int a,int b,int expected)
         {
             // Arrange
             var service = new CalculatorService();
