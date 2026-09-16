@@ -145,34 +145,35 @@ Test:
 
 ```csharp
 using Xunit;
-
-namespace Testing.Tests
-{
-    public class CalculatorTestData : TheoryData<int, int, int>
-    {
-        public CalculatorTestData()
-        {
-            Add(10, 20, 30);
-            Add(5, 5, 10);
-            Add(-10, 20, 10);
-            Add(0, 0, 0);
-        }
-    }
-}
-using Testing.Services;
+using System.Collections.Generic;
 
 namespace Testing.Tests
 {
     public class CalculatorServiceTests
     {
-        [Theory]
-        [ClassData(typeof(CalculatorTestData))]
-        public void Add_ReturnsCorrectResult(int a, int b, int expected)
+        // Test Data Method
+        public static IEnumerable<object[]> CalculatorTestData()
         {
+            yield return new object[] { 10, 20, 30 };
+            yield return new object[] { 5, 5, 10 };
+            yield return new object[] { 0, 10, 10 };
+        }
+
+        // Test Method
+        [Theory]
+        [MemberData(nameof(CalculatorTestData))]
+        public void Add_ReturnsCorrectResult(
+            int a,
+            int b,
+            int expected)
+        {
+            // Arrange
             var service = new CalculatorService();
 
+            // Act
             var result = service.Add(a, b);
 
+            // Assert
             Assert.Equal(expected, result);
         }
     }
