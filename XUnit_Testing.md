@@ -93,8 +93,7 @@ dotnet add package xunit.runner.visualstudio
 
 [Theory] — Used when method have parameters and we want to test multiple time the same method with different data
 
-[InlineData] OR [ClassData] - Provides testing data that we want to use for particular testing
-Controller:
+[InlineData] OR [ClassData] - Provides testing data that we want to use for particular method's testing
 
 **Write the test method inside this class (shown below)**
 
