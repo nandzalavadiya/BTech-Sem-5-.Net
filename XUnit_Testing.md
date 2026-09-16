@@ -90,7 +90,9 @@ dotnet add package xunit.runner.visualstudio
 ## Step 5 — Writing xUnit Tests: [Fact], [Theory], [InlineData]
 
 [Fact] — Used when methods doesn't requires any parameters and only need to execute the test case once
+
 [Theory] — Used when method have parameters and we want to test multiple time the same method with different data
+
 [InlineData] OR [ClassData] - Provides testing data that we want to use for particular testing
 Controller:
 
