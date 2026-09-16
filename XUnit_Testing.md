@@ -17,6 +17,7 @@ Testing means checking that your code works correctly before it goes live.
 ---
 
 ## Step 2 - Create an API Project and Add described methods
+If you want to Test a Method In Controller:
 ```csharp
 [HttpGet]
 public string GetStudents()
@@ -24,7 +25,7 @@ public string GetStudents()
     return $"Age: 18, City: Rajkot";
 }
 ```
-Service:
+If you want to Test a Method In ServiceLayer:
 
 ```csharp
 public class CalculatorService
