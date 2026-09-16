@@ -153,9 +153,12 @@ namespace Testing.Tests
 
 <img width="1867" height="881" alt="Failed" src="https://github.com/user-attachments/assets/2b15bcf1-bd7c-4c7e-a3de-9dfba1a7724a" />
 
+---
+---
 
-## Step 5 — Other Common Assert Methods Example
+## Other Common Assert Methods Examples
 
+**In API Project, add following methods**
 ```csharp
 public class StudentController
 {
@@ -195,7 +198,8 @@ public class StudentController
 }
 ```
 
-**TestController**
+
+**In Testing Project, add following test cases**
 
 ```csharp
 public class StudentControllerTest
