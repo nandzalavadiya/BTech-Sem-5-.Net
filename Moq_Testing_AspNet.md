@@ -152,6 +152,44 @@ public class UserServiceTests
         mockRepo.Verify(repo => repo.Add(It.IsAny<User>()), Times.Once);
         mockRepo.Verify(repo => repo.SaveChanges(), Times.Once);
     }
+[Fact]
+public void Add_Should_Map_Dto_To_User()
+{
+    // Arrange
+    var mockRepo = new Mock<IUserRepository>();
+
+    var service = new UserService(
+        mockRepo.Object,
+        null,
+        null
+    );
+
+    var dto = new UserDto
+    {
+        UserTypeID = (UserTypeEnum)1,
+        FullName = "Priya Shah",
+        UserCode = "STU002",
+        Email = "priya@test.com",
+        Password = "Pass@456",
+        MobileNumber = "8888888888",
+        ProfilePicturePath = "/images/priya.png"
+    };
+
+    // Act
+    service.Add(dto);
+
+    // Assert
+    mockRepo.Verify(
+        x => x.Add(It.Is<User>(u =>
+            u.FullName == "Priya Shah" &&
+            u.UserCode == "STU002" &&
+            u.Email == "priya@test.com" &&
+            u.IsActive == true &&
+            u.IsDeleted == false
+        )),
+        Times.Once
+    );
+}
 }
 ```
 
