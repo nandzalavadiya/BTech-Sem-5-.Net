@@ -122,9 +122,92 @@ namespace Student_Project_Management_System.Controllers
 ## Step 5 — In a Test Project Add a Class `StudentTest.cs`
 
 ```csharp
-public class UserServiceTests { [Fact] public void Add_ReturnsSuccessMessage_AndCallsRepository() { // Arrange - Create fake repository var mockRepo = new Mock<IUserRepository>(); // Create service and pass the fake repository var service = new UserService(mockRepo.Object, config: null); // Create test data var dto = new UserDto { UserTypeID = (UserTypeEnum)1, FullName = "Rahul Patel", UserCode = "STU001", Email = "rahul@test.com", Password = "Test@123", MobileNumber = "9999999999", ProfilePicturePath = null }; // Act - Call the Add method var result = service.Add(dto); // Assert - Check that correct message is returned Assert.Equal("Record Inserted", result); // Check that repository Add method was called once mockRepo.Verify( repo => repo.Add(It.IsAny<User>()), Times.Once ); // Check that SaveChanges method was called once mockRepo.Verify( repo => repo.SaveChanges(), Times.Once ); } [Fact] public void Add_Should_Map_Dto_To_User() { // Arrange - Create fake repository var mockRepo = new Mock<IUserRepository>(); // Create service using the fake repository var service = new UserService( mockRepo.Object, null, null ); // Create test DTO var dto = new UserDto { UserTypeID = (UserTypeEnum)1, FullName = "Priya Shah", UserCode = "STU002", Email = "priya@test.com", Password = "Pass@456", MobileNumber = "8888888888", ProfilePicturePath = "/images/priya.png" }; // Act - Send DTO to service service.Add(dto); // Assert - Check that DTO values are mapped to User entity mockRepo.Verify( x => x.Add(It.Is<User>(u => u.FullName == "Priya Shah" && u.UserCode == "STU002" && u.Email == "priya@test.com" && u.IsActive == true && u.IsDeleted == false )), Times.Once ); } }
-```
+```csharp
+public class UserServiceTests
+{
+    [Fact]
+    public void Add_ReturnsSuccessMessage_AndCallsRepository()
+    {
+        // Arrange - Create fake repository
+        var mockRepo = new Mock<IUserRepository>();
 
+        // Create service and pass the fake repository
+        var service = new UserService(mockRepo.Object, config: null);
+
+        // Create test data
+        var dto = new UserDto
+        {
+            UserTypeID = (UserTypeEnum)1,
+            FullName = "Rahul Patel",
+            UserCode = "STU001",
+            Email = "rahul@test.com",
+            Password = "Test@123",
+            MobileNumber = "9999999999",
+            ProfilePicturePath = null
+        };
+
+        // Act - Call the Add method
+        var result = service.Add(dto);
+
+        // Assert - Check that correct message is returned
+        Assert.Equal("Record Inserted", result);
+
+        // Check that repository Add method was called once
+        mockRepo.Verify(
+            repo => repo.Add(It.IsAny<User>()),
+            Times.Once
+        );
+
+        // Check that SaveChanges method was called once
+        mockRepo.Verify(
+            repo => repo.SaveChanges(),
+            Times.Once
+        );
+    }
+
+
+    [Fact]
+    public void Add_Should_Map_Dto_To_User()
+    {
+        // Arrange - Create fake repository
+        var mockRepo = new Mock<IUserRepository>();
+
+        // Create service using the fake repository
+        var service = new UserService(
+            mockRepo.Object,
+            null,
+            null
+        );
+
+        // Create test DTO
+        var dto = new UserDto
+        {
+            UserTypeID = (UserTypeEnum)1,
+            FullName = "Priya Shah",
+            UserCode = "STU002",
+            Email = "priya@test.com",
+            Password = "Pass@456",
+            MobileNumber = "8888888888",
+            ProfilePicturePath = "/images/priya.png"
+        };
+
+        // Act - Send DTO to service
+        service.Add(dto);
+
+        // Assert - Check that DTO values are mapped to User entity
+        mockRepo.Verify(
+            x => x.Add(It.Is<User>(u =>
+                u.FullName == "Priya Shah" &&
+                u.UserCode == "STU002" &&
+                u.Email == "priya@test.com" &&
+                u.IsActive == true &&
+                u.IsDeleted == false
+            )),
+            Times.Once
+        );
+    }
+}
+```
 ---
 
 ### Testing
