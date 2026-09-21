@@ -110,8 +110,8 @@ builder.Services.AddControllers()
 
 A **DTO (Data Transfer Object)** is a class used to transfer data between the client and the server.
 
-> **Why DTOs over `[JsonIgnore]` & `ReferenceHandler.IgnoreCycles`?**
-> `[JsonIgnore]` and `IgnoreCycles` only hide the cycle while still exposing the full entity (with extra/`null` fields), whereas a DTO fixes the root cause by returning only the fields you choose, with no navigation properties and no sensitive data.
+**Why DTOs over `[JsonIgnore]` & `ReferenceHandler.IgnoreCycles`?**
+- `[JsonIgnore]` and `IgnoreCycles` only hide the cycle while still exposing the full entity (with extra/`null` fields), whereas a DTO fixes the root cause by returning only the fields you choose, with no navigation properties and no sensitive data.
 
 ### Why It's Required
 
